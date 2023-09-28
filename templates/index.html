@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Upload</title>
+</head>
+<body>
+    <h1>Upload a Video</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="video">
+        <input type="submit" value="Upload">
+    </form>
+    <hr>
+    <h2>Uploaded Videos</h2>
+    <ul>
+        {% for filename in uploaded_files%}
+            <li><a href="/download/{{ filename }}">{{ filename }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
