@@ -23,6 +23,7 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
+     ensure_path_exists("uploads")
      uploaded_files = os.listdir(app.config['UPLOAD_FOLDER'])
      return render_template("index.html", uploaded_files=uploaded_files)
 
@@ -94,4 +95,4 @@ def download_video(filename):
 
 if __name__ == "__main__":
     os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
